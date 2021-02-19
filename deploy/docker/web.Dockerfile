@@ -1,4 +1,4 @@
-FROM node:8 AS build
+FROM node:12 AS build
 
 RUN npm install -g serve
 COPY src/mqueryfront /app
@@ -9,7 +9,7 @@ FROM python:3.7
 
 WORKDIR /usr/src/app/src
 
-RUN apt update; apt install -y cmake
+RUN apt-get update && apt-get install -y cmake
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 COPY "src/." "."
